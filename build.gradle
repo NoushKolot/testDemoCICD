@@ -1,3 +1,6 @@
+plugins {
+id "org.sonarqube" version "2.6"
+}
 buildscript {
   ext {
     lombokVersion = '1.16.20'
@@ -70,9 +73,7 @@ dependencies {
   spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.7.1'
 }
 
-plugins {
-id "org.sonarqube" version "2.6"
-}
+
 idea {
     project {
         vcs = "Git"
