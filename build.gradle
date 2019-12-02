@@ -73,3 +73,47 @@ dependencies {
 plugins {
 id "org.sonarqube" version "2.6"
 }
+idea {
+    project {
+        vcs = "Git"
+    }
+    module {
+        downloadSources = true
+    }
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+idea {
+    project {
+        vcs = "Git"
+    }
+    module {
+        downloadSources = true
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://artifactory.tingcore-central.com/artifactory/remote-repos" }
+    maven { url "https://artifactory.tingcore-central.com/artifactory/libs-release" }
+    maven { url "https://artifactory.tingcore-central.com/artifactory/libs-snapshot" }
+    maven { url 'https://repo.spring.io/libs-milestone' }
+    jcenter()
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+// Overriding the hibernate.version property to bump Hibernate version up to latest
+ext['hibernate.version'] = '5.3.5.Final'
+
+configurations.all {
+    exclude module: 'spring-boot-starter-logging'
+    exclude module: "logback-classic"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR1"
+    }
+}
