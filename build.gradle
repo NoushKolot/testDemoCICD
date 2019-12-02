@@ -69,3 +69,7 @@ dependencies {
 
   spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.7.1'
 }
+
+plugins {
+id "org.sonarqube" version "2.6"
+}
